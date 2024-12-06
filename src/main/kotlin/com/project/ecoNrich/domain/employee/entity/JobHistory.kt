@@ -19,6 +19,16 @@ class JobHistory(
     val jobId: String,
 
     @Column(name = "department_id")
-    val departmentId: Int
+    val departmentId: Long
 ) {
+    companion object {
+        fun createJobHistory(employeeId: Long, startDate: LocalDate, endDate: LocalDate, jobId: String, departmentId: Long): JobHistory {
+            return JobHistory(
+                id = JobHistoryId(employeeId = employeeId, startDate = startDate),
+                endDate = endDate,
+                jobId = jobId,
+                departmentId = departmentId
+            )
+        }
+    }
 }

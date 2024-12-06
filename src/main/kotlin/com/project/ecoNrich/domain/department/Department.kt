@@ -9,10 +9,10 @@ import javax.persistence.*
 class Department(
     @Id
     @Column(name = "department_id")
-    val departmentId: Int,
+    val departmentId: Long? = null,
 
     @Column(name = "department_name")
-    val departmentName: String,
+    val departmentName: String? = null,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "manager_id", referencedColumnName = "employee_id")

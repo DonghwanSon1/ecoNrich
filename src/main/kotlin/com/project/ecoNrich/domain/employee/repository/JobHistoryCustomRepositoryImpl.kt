@@ -1,12 +1,14 @@
 package com.project.ecoNrich.domain.employee.repository
 
 import com.project.ecoNrich.domain.department.QDepartment
+import com.project.ecoNrich.domain.employee.entity.JobHistory
 import com.project.ecoNrich.domain.employee.entity.QJobHistory
 import com.project.ecoNrich.domain.employee.rqrs.EmployeeHistoryRs
 import com.project.ecoNrich.domain.job.QJob
 import com.querydsl.core.types.Projections
 import com.querydsl.jpa.impl.JPAQueryFactory
 import org.springframework.stereotype.Repository
+import java.time.LocalDate
 
 @Repository
 class JobHistoryCustomRepositoryImpl(private val queryFactory: JPAQueryFactory) : JobHistoryCustomRepository {
@@ -35,5 +37,20 @@ class JobHistoryCustomRepositoryImpl(private val queryFactory: JPAQueryFactory) 
         .where(jobHistory.id.employeeId.eq(employeeId))
         .orderBy(jobHistory.id.startDate.desc())
         .fetch()
+  }
+
+  override fun searchRecentHistory(employeeId: Long): JobHistory? {
+    return queryFactory
+        .select(
+            Projections.fields(
+                JobHistory::class.java,
+                jobHistory.endDate
+            )
+        )
+        .from(jobHistory)
+        .where(jobHistory.id.employeeId.eq(employeeId))
+        .orderBy(jobHistory.endDate.desc())
+        .limit(1)
+        .fetchOne()
   }
 }

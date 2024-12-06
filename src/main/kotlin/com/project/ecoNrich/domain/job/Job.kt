@@ -9,10 +9,10 @@ import javax.persistence.*
 class Job(
     @Id
     @Column(name = "job_id")
-    val jobId: String,
+    val jobId: String? = null,
 
     @Column(name = "job_title")
-    val jobTitle: String,
+    val jobTitle: String? = null,
 
     @Column(name = "min_salary")
     val minSalary: Long? = null,
