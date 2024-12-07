@@ -9,7 +9,7 @@ import javax.persistence.*
 class Department(
     @Id
     @Column(name = "department_id")
-    val departmentId: Long? = null,
+    val departmentId: Long,
 
     @Column(name = "department_name")
     val departmentName: String? = null,

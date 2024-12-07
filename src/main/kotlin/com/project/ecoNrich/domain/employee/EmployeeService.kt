@@ -15,6 +15,7 @@ import com.project.ecoNrich.domain.employee.rqrs.EmployeeRs
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.math.BigDecimal
+import java.math.RoundingMode
 import java.time.LocalDate
 
 @Service
@@ -66,7 +67,20 @@ class EmployeeService(
     employeeRepository.save(entity.update(rq))
 
     return "사원 정보를 성공적으로 업데이트 했습니다."
+  }
+  @Transactional
+  fun updateEmployeeSalary(departmentId: Long, rate: Double): String {
 
+    // 부서에 속한 사원들을 조회해서 가져오고, 없을 시 존재하지 않다는 메시지를 응답한다.
+    // (부서는 존재하지만 사원이 없을 수도 있기 때문에 Exception 이 아닌 메시지로 응답한다.)
+    val employeeList: List<Employee> = employeeRepository.findByDepartmentDepartmentId(departmentId)
+        .takeIf { it.isNotEmpty() } ?: return "해당 부서에는 사원들이 존재하지 않습니다."
+
+    // 엔티티에서 val -> var 로 변경하여 JPA 영속성을 이용하여 Update 할 수 있도록 한다.
+    employeeList.forEach { it.salary = it.salary!!.multiply(BigDecimal.valueOf(rate))
+        .setScale(2, RoundingMode.HALF_UP) }
+
+    return "해당 부서의 사원들을 해당 비율로 급여 인상하였습니다."
   }
 
 

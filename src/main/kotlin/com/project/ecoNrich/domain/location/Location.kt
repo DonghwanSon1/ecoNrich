@@ -9,7 +9,7 @@ class Location(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "location_id")
-    val locationId: Int,
+    val locationId: Long? = null,
 
     @Column(name = "street_address")
     val streetAddress: String? = null,
@@ -18,14 +18,14 @@ class Location(
     val postalCode: String? = null,
 
     @Column(name = "city")
-    val city: String,
+    val city: String? = null,
 
     @Column(name = "state_province")
     val stateProvince: String? = null,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "country_id", referencedColumnName = "country_id")
-    val country: Country
+    val country: Country? = null
 
 ) {
 }

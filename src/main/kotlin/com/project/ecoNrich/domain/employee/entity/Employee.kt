@@ -34,7 +34,7 @@ class Employee(
     val job: Job? = null,
 
     @Column(name = "salary")
-    val salary: BigDecimal? = null,
+    var salary: BigDecimal? = null,
 
     @Column(name = "commission_pct")
     val commissionPct: BigDecimal? = null,

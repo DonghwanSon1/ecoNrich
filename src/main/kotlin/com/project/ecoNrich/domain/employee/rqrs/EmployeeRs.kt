@@ -31,7 +31,7 @@ data class EmployeeRs(
     val hireDate: LocalDate? = null,
 
     @Schema(description = "부서 정보")
-    val department: DepartmentRs? = null,
+    val department: SimpleDepartmentRs? = null,
 
     @Schema(description = "직업 정보")
     val job: JobRs? = null,
@@ -50,15 +50,15 @@ data class EmployeeRs(
                 email = employeeDetailViewEntity.email,
                 phoneNumber = employeeDetailViewEntity.phoneNumber,
                 hireDate = employeeDetailViewEntity.hireDate,
-                department = DepartmentRs(employeeDetailViewEntity.departmentId, employeeDetailViewEntity.departmentName),
+                department = SimpleDepartmentRs(employeeDetailViewEntity.departmentId, employeeDetailViewEntity.departmentName),
                 job = JobRs(employeeDetailViewEntity.jobId, employeeDetailViewEntity.jobTitle),
                 location = LocationRs(
-                    employeeDetailViewEntity.locationId,
-                    employeeDetailViewEntity.countryId,
-                    employeeDetailViewEntity.city,
-                    employeeDetailViewEntity.stateProvince,
-                    employeeDetailViewEntity.countryName,
-                    employeeDetailViewEntity.regionName
+                    locationId = employeeDetailViewEntity.locationId,
+                    countryId = employeeDetailViewEntity.countryId,
+                    city = employeeDetailViewEntity.city,
+                    stateProvince = employeeDetailViewEntity.stateProvince,
+                    countryName = employeeDetailViewEntity.countryName,
+                    regionName = employeeDetailViewEntity.regionName
                 )
             )
         }

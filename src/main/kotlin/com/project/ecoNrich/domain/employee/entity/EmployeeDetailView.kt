@@ -23,7 +23,7 @@ class EmployeeDetailView(
     val departmentId: Int? = null,
 
     @Column(name = "location_id")
-    val locationId: Int? = null,
+    val locationId: Long? = null,
 
     @Column(name = "country_id")
     val countryId: String,
