@@ -17,7 +17,7 @@ data class EmployeeHistoryRs(
     val jobTitle: String? = null,
 
     @Schema(description = "부서 ID")
-    val departmentId: Int? = null,
+    val departmentId: Long? = null,
 
     @Schema(description = "부서 이름")
     val departmentName: String? = null,

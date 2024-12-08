@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  ecoNrich-service:
+    restart: on-failure
+    build: .
+    image: eco-n-rich:latest
+    container_name: pulley-math
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/hr
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: admin
