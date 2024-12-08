@@ -13,5 +13,6 @@ enum class CommonExceptionCode(
     EMPLOYEE_NOT_EXIST(HttpStatus.BAD_REQUEST, "해당 사원이 존재하지 않습니다."),
     DUPLICATE_DATA_ERROR(HttpStatus.CONFLICT, "중복 데이터 발생했습니다. 입력값을 확인 해주세요."),
     CONSTRAINTS_ERROR(HttpStatus.BAD_REQUEST, "데이터 처리 중 오류가 발생했습니다. 입력값을 확인한 후 다시 시도해주세요."),
+    PUBLIC_API_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "공공데이터 연동 API가 예상치 못한 오류가 발생했습니다. 관리자에게 문의 부탁드립니다."),
 
 }

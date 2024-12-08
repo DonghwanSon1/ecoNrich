@@ -28,3 +28,6 @@ logging:
       hibernate:
         SQL: DEBUG
         type.descriptor.sql.BasicBinder: TRACE
+
+public:
+  api.service-key: "tLg%2BgksUCGoZbF5WXFg6jXERnem4wYeQ3rsjx6TDCDDSYlinkh50mwULTfYvCTTqrBEUDLHIDxGWBRyP37HmWQ%3D%3D"
