@@ -7,6 +7,7 @@ import com.project.ecoNrich.domain.employee.entity.EmployeeDetailView
 import com.project.ecoNrich.domain.employee.rqrs.EmployeeHistoryRs
 import com.project.ecoNrich.domain.employee.rqrs.EmployeeRq
 import com.project.ecoNrich.domain.employee.rqrs.EmployeeRs
+import com.project.ecoNrich.domain.employee.rqrs.SimpleEmployeeRs
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.web.bind.annotation.*
@@ -18,6 +19,15 @@ import java.math.BigDecimal
 class EmployeeController(
     private val employeeService: EmployeeService
 ) {
+
+  /**
+   * 전체 사원의 간단 정보 조회 API
+   */
+  @GetMapping
+  @Operation(summary = "전체 사원의 간단 정보 조회", description = "전체 사원의 간단한 정보를 조회합니다.")
+  fun searchAllEmployee(): BaseResponse<List<SimpleEmployeeRs>> {
+    return BaseResponse(data = employeeService.searchAllEmployee())
+  }
 
   /**
    * 특정 사원의 현재 정보 조회 API

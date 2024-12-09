@@ -12,6 +12,7 @@ import com.project.ecoNrich.domain.employee.repository.JobHistoryRepository
 import com.project.ecoNrich.domain.employee.rqrs.EmployeeHistoryRs
 import com.project.ecoNrich.domain.employee.rqrs.EmployeeRq
 import com.project.ecoNrich.domain.employee.rqrs.EmployeeRs
+import com.project.ecoNrich.domain.employee.rqrs.SimpleEmployeeRs
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.math.BigDecimal
@@ -25,6 +26,13 @@ class EmployeeService(
     private val employeeDetailViewRepository: EmployeeDetailViewRepository,
     private val jobHistoryRepository: JobHistoryRepository,
 ) {
+
+  /**
+   * 전체 사원 조회
+   */
+  fun searchAllEmployee(): List<SimpleEmployeeRs> {
+    return employeeRepository.searchAllEmployee()
+  }
 
   /**
    * 특정 사원 조회
