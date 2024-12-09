@@ -5,10 +5,11 @@ services:
     restart: on-failure
     build: .
     image: eco-n-rich:latest
-    container_name: pulley-math
+    container_name: eco-n-rich
     ports:
       - "8080:8080"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/hr
+#      SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/hr # local
+      SPRING_DATASOURCE_URL: jdbc:mysql://13.125.146.134:3306/hr # aws
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: admin
